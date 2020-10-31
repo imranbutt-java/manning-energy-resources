@@ -1,1 +1,1 @@
-template: "hello %s!"
+template: "hello world, %s!"

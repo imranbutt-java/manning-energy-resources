@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <!-- Maybe you want to use your own groupId here, maybe not. Your call.-->
-  <groupId>com.jesseyates.manning</groupId>
+  <groupId>com.manning.batteries</groupId>
   <artifactId>energy-kafka</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -123,6 +123,9 @@
             <configuration>
               <sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>
               <outputDirectory>${project.basedir}/src/main/generated</outputDirectory>
+              <includes>
+                <include>**/*.avro</include>
+              </includes>
             </configuration>
           </execution>
         </executions>
@@ -154,40 +157,6 @@
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <createDependencyReducedPom>true</createDependencyReducedPom>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <mainClass>com.manning.batteries.HelloWorldApplication</mainClass>
                 </transformer>
               </transformers>
@@ -195,7 +164,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 
@@ -266,11 +234,11 @@
     <!-- Databases drivers -->
     <!-- ****************** -->
     <!-- Mysql -->
-<!--    <dependency>-->
-<!--      <groupId>mysql</groupId>-->
-<!--      <artifactId>mysql-connector-java</artifactId>-->
-<!--      <version>8.0.19</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>mysql</groupId>-->
+    <!--      <artifactId>mysql-connector-java</artifactId>-->
+    <!--      <version>8.0.19</version>-->
+    <!--    </dependency>-->
 
     <!-- Postgres -->
     <dependency>
@@ -296,27 +264,27 @@
 
     <!-- Kafka for Junit Tests -->
     <!-- use: https://github.com/salesforce/kafka-junit/tree/master/kafka-junit4#kafkatestserver -->
-<!--    <dependency>-->
-<!--      <groupId>com.salesforce.kafka.test</groupId>-->
-<!--      <artifactId>kafka-junit4</artifactId>-->
-<!--      <version>3.2.1</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.salesforce.kafka.test</groupId>-->
+    <!--      <artifactId>kafka-junit4</artifactId>-->
+    <!--      <version>3.2.1</version>-->
+    <!--      <scope>test</scope>-->
+    <!--    </dependency>-->
 
     <!-- Kafka for Scalatest -->
     <!-- https://github.com/embeddedkafka/embedded-kafka -->
-<!--    <dependency>-->
-<!--      <groupId>io.github.embeddedkafka</groupId>-->
-<!--      <artifactId>embedded-kafka-streams_2.12</artifactId>-->
-<!--      <version>2.4.1.1</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>io.github.embeddedkafka</groupId>-->
+    <!--      <artifactId>embedded-kafka-streams_2.12</artifactId>-->
+    <!--      <version>2.4.1.1</version>-->
+    <!--      <scope>test</scope>-->
+    <!--    </dependency>-->
     <!-- Schema registry for scalatests -->
     <!-- https://github.com/embeddedkafka/embedded-kafka-schema-registry -->
-<!--    <dependency>-->
-<!--      <groupId>io.github.embeddedkafka</groupId>-->
-<!--      <artifactId>embedded-kafka-schema-registry_2.12</artifactId>-->
-<!--      <version>${confluent.version}</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>io.github.embeddedkafka</groupId>-->
+    <!--      <artifactId>embedded-kafka-schema-registry_2.12</artifactId>-->
+    <!--      <version>${confluent.version}</version>-->
+    <!--    </dependency>-->
   </dependencies>
 </project>
