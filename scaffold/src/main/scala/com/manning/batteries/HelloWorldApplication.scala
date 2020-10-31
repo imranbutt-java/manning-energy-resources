@@ -1,5 +1,6 @@
 package com.manning.batteries
 
+import com.manning.batteries.resource.HelloWorldResource
 import io.dropwizard.Application
 import io.dropwizard.setup.{Bootstrap, Environment}
 
@@ -16,6 +17,6 @@ class HelloWorldApplication extends Application[HelloWorldConfiguration] {
 
 object HelloWorldApplication {
   def main(args: Array[String]): Unit = {
-    new HelloWorldApplication().run()
+    new HelloWorldApplication().run(args: _*)
   }
 }
