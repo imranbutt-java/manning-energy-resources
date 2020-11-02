@@ -1,0 +1,11 @@
+template: "hello world, %s!"
+
+databaseName: "device-db"
+deviceTable: "devices"
+
+database:
+  driverClass: org.postgresql.Driver
+  user: imransarwar
+  password: trust
+  url: jdbc:postgresql://localhost:5432/postgres
+  validationQuery: "/* MyService Health Check */ SELECT 1"

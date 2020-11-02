@@ -7,7 +7,7 @@ import javax.ws.rs.{GET, Path, Produces, QueryParam}
 
 /* imransarwar created on 31/10/2020*/
 @Path("/hello-world")
-class HelloWorldResource(template: String, defaultName: String) {
+class DeviceApiResource(template: String, defaultName: String) {
   @Produces(Array(APPLICATION_JSON))
   @GET
   @Timed
